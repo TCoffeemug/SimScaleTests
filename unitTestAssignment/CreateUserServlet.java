@@ -1,15 +1,11 @@
 package unitTestAssignment;
 
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 public class CreateUserServlet extends HttpServlet {
 
@@ -57,23 +53,10 @@ public class CreateUserServlet extends HttpServlet {
 		return activationLink;
 	}
 
-	/// something else ///
-
-	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-		// some magic here...
-
-		mTestHelper.setActivationLink(
-				getActivationLink(mTestHelper.getEmail(), mTestHelper.activationToken(), mTestHelper.inviteToken()));
-
-		// some magic there...
-
-	}
+	/// helper methods ///
 
 	public void createTestHelper(String email, String activationToken, String inviteToken) {
-		mTestHelper = new TestHelper(email, activationToken, inviteToken);
+		mTestHelper = new TestHelper(getActivationLink(email, activationToken, inviteToken));
 	}
 
 	public TestHelper getTestHelper() {

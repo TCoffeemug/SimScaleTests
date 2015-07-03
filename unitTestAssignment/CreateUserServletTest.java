@@ -33,7 +33,6 @@ public class CreateUserServletTest {
 	public void test() throws ServletException, IOException {
 
 		mUserServlet.createTestHelper(VALID_BUT_STRANGE_EMAIL, ACTIVATION_TOKEN, INVITE_TOKEN);
-		mUserServlet.doGet(null, null);
 
 		try {
 			final URL url = new URL(mUserServlet.getTestHelper().getActivationLink());
