@@ -14,6 +14,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import uiTestingAssignment.util.CommonParameters;
 
+/**
+ * parent class for all page classes
+ *
+ * @author Eisbrenner
+ *
+ */
 public class WebPage {
 
 	protected WebDriver mDriver;

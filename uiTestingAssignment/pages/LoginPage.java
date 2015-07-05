@@ -10,6 +10,12 @@ import uiTestingAssignment.util.CommonParameters;
 import uiTestingAssignment.util.LoopHelper;
 import uiTestingAssignment.util.LoopHelper.LoopTimeoutException;
 
+/**
+ * Class representing the login page, providing its functionality
+ *
+ * @author Eisbrenner
+ *
+ */
 public class LoginPage extends WebPage {
 
 	private static final String LOGIN_URL = "https://platform.simscale.com//#authentication";

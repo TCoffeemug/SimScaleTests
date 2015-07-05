@@ -12,6 +12,12 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * test verifying that the bug is fixed
+ *
+ * @author Eisbrenner
+ *
+ */
 public class CreateUserServletTest {
 
 	private final String VALID_BUT_STRANGE_EMAIL = "\"very.(),:;<>[]\\\".VERY.\\\"very@\\\\ \\\"very\\\".unusual\"@strange.example.com";

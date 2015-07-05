@@ -7,6 +7,8 @@ import java.util.concurrent.TimeUnit;
  * LoopHelper instance and implements the getCurrentState() method of the ICheck
  * interface.
  *
+ * @author Eisbrenner
+ *
  * @param <T>
  */
 public class LoopHelper<T> {
@@ -42,16 +44,25 @@ public class LoopHelper<T> {
 
 	}
 
-	private static final int ITERATION_DELAY_IN_SECONDS = 1;
+	private static final int DEFAULT_ITERATION_DELAY_IN_SECONDS = 1;
 
 	private ICheck<?> mCheck;
 	private int mTimeoutInSeconds;
 	private T mExpectedState;
+	private int mIterationDelayInSec;
+
+	public LoopHelper(int timeout, int iterationDelay, T expectedState, ICheck<?> check) {
+		mCheck = check;
+		mTimeoutInSeconds = timeout;
+		mExpectedState = expectedState;
+		mIterationDelayInSec = iterationDelay;
+	}
 
 	public LoopHelper(int timeout, T expectedState, ICheck<?> check) {
 		mCheck = check;
 		mTimeoutInSeconds = timeout;
 		mExpectedState = expectedState;
+		mIterationDelayInSec = DEFAULT_ITERATION_DELAY_IN_SECONDS;
 	}
 
 	public void run() {
@@ -59,7 +70,7 @@ public class LoopHelper<T> {
 		T currentState = null;
 		while ((System.currentTimeMillis() - timeStarted) < (TimeUnit.SECONDS.toMillis(mTimeoutInSeconds))) {
 			try {
-				TimeUnit.SECONDS.sleep(ITERATION_DELAY_IN_SECONDS);
+				TimeUnit.SECONDS.sleep(mIterationDelayInSec);
 			} catch (InterruptedException e) {
 				System.err.println("LoopHelper delay sleep was interrupted");
 			}

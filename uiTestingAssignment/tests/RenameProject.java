@@ -25,10 +25,8 @@ import uiTestingAssignment.util.CommonParameters;
  */
 public class RenameProject {
 
-	private static final String PRECONDITION_NOT_MET = "Preconditions not met for %s: %s";
-	private static final String POSTCONDITION_NOT_MET = "Postconditions not met for %s: %s";
 	private static final String DOES_EXIST = "does exists, but shouldn't";
-	private static final String DOES_NOT_EXIST = "does not exists, but shouldn";
+	private static final String DOES_NOT_EXIST = "does not exists, but should";
 
 	private LoginPage mLoginPage;
 	private ProjectPage mProjectPage;
@@ -52,10 +50,10 @@ public class RenameProject {
 		String oldName = CommonParameters.NAME_PROJECT_2;
 		String newName = CommonParameters.NAME_PROJECT_RENAMED;
 		// check preconditions
-		String errorMessage = String.format(PRECONDITION_NOT_MET, oldName, DOES_NOT_EXIST);
+		String errorMessage = String.format(CommonParameters.PRECONDITION_NOT_MET, oldName, DOES_NOT_EXIST);
 		assertTrue(errorMessage, mProjectPage.doesProjectExist(oldName));
 
-		errorMessage = String.format(PRECONDITION_NOT_MET, newName, DOES_EXIST);
+		errorMessage = String.format(CommonParameters.PRECONDITION_NOT_MET, newName, DOES_EXIST);
 		assertFalse(errorMessage, mProjectPage.doesProjectExist(newName));
 
 		Point projectPositionBefore = mProjectPage.getProjectPosition(oldName);
@@ -64,14 +62,14 @@ public class RenameProject {
 		mProjectPage.changeProjectName(oldName, newName);
 
 		// post check
-		errorMessage = String.format(POSTCONDITION_NOT_MET, oldName, DOES_EXIST);
+		errorMessage = String.format(CommonParameters.POSTCONDITION_NOT_MET, oldName, DOES_EXIST);
 		assertFalse(errorMessage, mProjectPage.doesProjectExist(oldName));
 
-		errorMessage = String.format(POSTCONDITION_NOT_MET, newName, DOES_NOT_EXIST);
+		errorMessage = String.format(CommonParameters.POSTCONDITION_NOT_MET, newName, DOES_NOT_EXIST);
 		assertTrue(errorMessage, mProjectPage.doesProjectExist(newName));
 
 		Point projectPositionAfter = mProjectPage.getProjectPosition(newName);
-		errorMessage = String.format(POSTCONDITION_NOT_MET + "", newName, "has different Position");
+		errorMessage = String.format(CommonParameters.POSTCONDITION_NOT_MET + "", newName, "has different Position");
 		assertTrue(errorMessage, mProjectPage.isSamePosition(projectPositionBefore, projectPositionAfter));
 	}
 

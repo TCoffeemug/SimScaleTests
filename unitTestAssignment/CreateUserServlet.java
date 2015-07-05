@@ -7,6 +7,12 @@ import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServlet;
 
+/**
+ * class to debug
+ *
+ * @author Eisbrenner
+ *
+ */
 public class CreateUserServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
