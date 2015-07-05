@@ -2,7 +2,7 @@
 
 The packages contain the files for the different tasks. 
 
-<h2>Task 1: Unit Test Assignment</h>
+<h2>Task 1: Unit Test Assignment</h2>
 
 done!
 
